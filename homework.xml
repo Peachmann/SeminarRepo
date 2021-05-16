@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<Homeworks>
+<Entities>
+    <homework ID="99">
+        <Description>Test HW</Description>
+        <Deadline>6</Deadline>
+        <Startline>2</Startline>
+    </homework>
     <homework ID="1">
         <Description>File</Description>
         <Deadline>7</Deadline>
@@ -15,4 +20,9 @@
         <Deadline>9</Deadline>
         <Startline>7</Startline>
     </homework>
-</Homeworks>
+    <homework ID="47">
+        <Description>Test HW</Description>
+        <Deadline>6</Deadline>
+        <Startline>2</Startline>
+    </homework>
+</Entities>
