@@ -39,6 +39,18 @@ class ServiceTest {
 
     @org.junit.jupiter.api.Test
     void findAllStudents() {
+        Iterable<Student> originalStudents = service.findAllStudents();
+        long originalCount = StreamSupport.stream(originalStudents.spliterator(), false).count();
+
+        Student student = new Student("99", "Kis Pal", 5);
+        int result = service.saveStudent(student.getID(), student.getName(), student.getGroup());
+
+        Iterable<Student> newStudent = service.findAllStudents();
+        long newCount = StreamSupport.stream(newStudent.spliterator(), false).count();
+
+        assertTrue(originalCount + 1 == newCount);
+
+        service.deleteHomework(student.getID());
     }
 
     @org.junit.jupiter.api.Test
@@ -83,10 +95,18 @@ class ServiceTest {
 
     @org.junit.jupiter.api.Test
     void deleteStudent() {
+        Student student = new Student("99", "Kis Pal", 5);
+        service.saveStudent(student.getID(), student.getName(), student.getGroup());
+        int result = service.deleteStudent(student.getID());
+        assertEquals(1, result);
     }
 
     @org.junit.jupiter.api.Test
     void deleteHomework() {
+        Homework hw = new Homework("143", "Test HW", 6, 2);
+        service.saveHomework(hw.getID(), hw.getDescription(), hw.getDeadline(), hw.getStartline());
+        int result = service.deleteHomework(hw.getID());
+        assertEquals(1, result);
     }
 
     @org.junit.jupiter.api.Test
