@@ -114,7 +114,22 @@ class ServiceTest {
     }
 
     @org.junit.jupiter.api.Test
-    void updateHomework() {
+    void updateHomeworkCorrect() {
+        Homework hw = new Homework("143", "Test HW", 6, 2);
+        service.saveHomework(hw.getID(), hw.getDescription(), hw.getDeadline(), hw.getStartline());
+        int result = service.updateHomework("143", "Patched HW", 6, 2);
+        assertEquals(1, result);
+        service.deleteHomework(hw.getID());
+    }
+
+
+    @org.junit.jupiter.api.Test
+    void updateHomeworkIncorrect() {
+        Homework hw = new Homework("143", "Test HW", 6, 2);
+        service.saveHomework(hw.getID(), hw.getDescription(), hw.getDeadline(), hw.getStartline());
+        int result = service.updateHomework("143", "", 6, 2);
+        assertEquals(1, result);
+        service.deleteHomework(hw.getID());
     }
 
     @org.junit.jupiter.api.Test
