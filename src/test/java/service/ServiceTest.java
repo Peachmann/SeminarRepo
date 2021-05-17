@@ -128,7 +128,7 @@ class ServiceTest {
         Homework hw = new Homework("143", "Test HW", 6, 2);
         service.saveHomework(hw.getID(), hw.getDescription(), hw.getDeadline(), hw.getStartline());
         int result = service.updateHomework("143", "", 6, 2);
-        assertEquals(1, result);
+        assertEquals(0, result);
         service.deleteHomework(hw.getID());
     }
 
